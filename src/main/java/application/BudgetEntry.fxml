@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<TabPane tabMinHeight="30.0" tabMinWidth="200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BudgetController">
+   <tabs>
+      <Tab closable="false" style="-fx-font-size: Segoe UI Semibold;" text="Main Page">
+         <content>
+            <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="931.0" style="-fx-background-color: #D4E6F7;" vgap="5.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="0.0" prefWidth="0.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="302.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="302.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="302.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0" minWidth="0.0" prefWidth="0.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="307.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="33.799996948242196" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="339.0" minHeight="10.0" prefHeight="330.20001220703125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="114.19998779296878" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView fx:id="budgetTable" editable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                     <columns>
+                        <TableColumn fx:id="dateColumn" prefWidth="147.2000214457512" text="Date" />
+                        <TableColumn fx:id="categoryColumn" prefWidth="142.3999786376953" text="Category" />
+                        <TableColumn fx:id="subcategoryColumn" prefWidth="166.4000244140625" text="Subcategory" />
+                        <TableColumn fx:id="furtherSubcategoryColumn" prefWidth="184.79995727539062" text="Further Subcategory" />
+                        <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="134.4000244140625" text="Price" />
+                        <TableColumn fx:id="detailsColumn" prefWidth="143.199951171875" text="Details" />
+                     </columns>
+                  </TableView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: FFF59D;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <children>
+                        <DatePicker prefHeight="11.0" prefWidth="163.0" promptText="Start Date" />
+                        <Label text="-">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker promptText="End Date" />
+                        <Button mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="26.0" prefWidth="84.0" text="Select">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: C5E1A5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <children>
+                        <ComboBox fx:id="tableNameBox" layoutX="64.0" layoutY="6.0" prefHeight="26.0" prefWidth="174.0" promptText="Table Name" />
+                     </children>
+                  </Pane>
+                  <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="127.0" promptText="Date" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <TextField fx:id="currencyText" maxWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="\$" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="detailText" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="272.0" promptText="Details" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <ComboBox fx:id="categoryBox" prefHeight="26.0" prefWidth="200.0" promptText="Category" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="subcategoryBox" prefWidth="200.0" promptText="Subcategory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="furtherSubcategoryBox" prefWidth="200.0" promptText="Further Subcategory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <Button fx:id="enterButton" mnemonicParsing="false" onAction="#changeButton" prefHeight="50.0" prefWidth="200.0" text="Enter" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteButtonClicked" prefHeight="25.0" prefWidth="200.0" text="Delete a row" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab closable="false" text="Analyse Page">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+   </tabs>
+</TabPane>
